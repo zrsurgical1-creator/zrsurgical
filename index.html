@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ZR Surgical | Precision Instruments. Global Trust.</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --green:#6aaa2a;
+    --green-dark:#4d8a1a;
+    --green-light:#e8f5d5;
+    --teal:#2a5f7a;
+    --teal-dark:#1a3f52;
+    --teal-light:#e0ecf3;
+    --gray:#f7f7f5;
+    --dark:#1a1a1a;
+    --text:#333;
+    --muted:#666;
+    --white:#fff;
+    --border:#e0e0e0;
+  }
+  body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:#fff;}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;}
+  .nav-logo img{height:44px;}
+  .nav-logo span{font-size:1.2rem;font-weight:700;color:var(--teal-dark);}
+  .nav-links{display:flex;gap:2rem;}
+  .nav-links a{font-size:.92rem;color:var(--text);font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--green-dark);}
+  .nav-right{display:flex;align-items:center;gap:1rem;}
+  .nav-phone{font-size:.88rem;color:var(--muted);}
+  .btn{display:inline-block;padding:.55rem 1.3rem;border-radius:6px;font-size:.88rem;font-weight:600;cursor:pointer;transition:.2s;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:var(--green-dark);}
+  .btn-outline{border:2px solid var(--teal);color:var(--teal);background:transparent;}
+  .btn-outline:hover{background:var(--teal);color:#fff;}
+
+  /* HERO */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--teal-dark) 0%,#1e4d66 60%,#2a6640 100%);overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1600&q=80') center/cover;opacity:.13;}
+  .hero-content{position:relative;max-width:1200px;margin:0 auto;padding:6rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .hero-badge{display:inline-block;background:rgba(106,170,42,.25);color:#b6e06a;font-size:.78rem;font-weight:600;letter-spacing:.08em;padding:.3rem .9rem;border-radius:20px;border:1px solid rgba(106,170,42,.4);margin-bottom:1.2rem;text-transform:uppercase;}
+  .hero h1{font-size:3.2rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1.2rem;}
+  .hero h1 em{color:#8ed44a;font-style:normal;}
+  .hero p{font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:2rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .hero-btns .btn-primary{padding:.75rem 1.8rem;font-size:.95rem;}
+  .hero-btns .btn-ghost{padding:.75rem 1.8rem;font-size:.95rem;border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;font-weight:600;}
+  .hero-btns .btn-ghost:hover{background:rgba(255,255,255,.1);}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+  .hero-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:1.5rem;text-align:center;}
+  .hero-stat .num{font-size:2.4rem;font-weight:800;color:#8ed44a;}
+  .hero-stat .lbl{font-size:.82rem;color:rgba(255,255,255,.7);margin-top:.2rem;}
+
+  /* TICKER */
+  .ticker{background:var(--teal-dark);padding:.7rem 0;overflow:hidden;}
+  .ticker-inner{display:flex;gap:2.5rem;animation:scroll 30s linear infinite;white-space:nowrap;}
+  .ticker-item{font-size:.8rem;color:rgba(255,255,255,.75);font-weight:500;display:flex;align-items:center;gap:.5rem;}
+  .ticker-item::before{content:'✦';color:#8ed44a;font-size:.7rem;}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SECTION COMMON */
+  section{padding:5rem 2rem;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green-dark);margin-bottom:.6rem;}
+  .section-title{font-size:2.1rem;font-weight:800;color:var(--teal-dark);margin-bottom:1rem;line-height:1.25;}
+  .section-sub{font-size:1rem;color:var(--muted);max-width:580px;line-height:1.7;}
+
+  /* PRODUCTS */
+  .products{background:var(--gray);}
+  .products-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;}
+  .product-card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.25s;cursor:pointer;}
+  .product-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1);border-color:var(--green);}
+  .product-img{height:160px;background:linear-gradient(135deg,var(--teal-light),var(--green-light));display:flex;align-items:center;justify-content:center;font-size:3rem;}
+  .product-body{padding:1.2rem;}
+  .product-body h3{font-size:1rem;font-weight:700;color:var(--teal-dark);margin-bottom:.3rem;}
+  .product-count{font-size:.8rem;color:var(--green-dark);font-weight:600;}
+  .product-link{font-size:.82rem;color:var(--teal);margin-top:.6rem;display:block;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+  .about-img{border-radius:12px;overflow:hidden;background:var(--teal-light);}
+  .about-img img{width:100%;height:200px;object-fit:cover;display:block;}
+  .about-stats{display:flex;gap:2rem;margin:1.5rem 0;}
+  .about-stat .num{font-size:2rem;font-weight:800;color:var(--green-dark);}
+  .about-stat .lbl{font-size:.8rem;color:var(--muted);}
+
+  /* MFG */
+  .mfg{background:var(--teal-dark);}
+  .mfg .section-tag{color:#8ed44a;}
+  .mfg .section-title{color:#fff;}
+  .mfg-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:2.5rem;}
+  .mfg-list{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin:1.5rem 0;}
+  .mfg-list li{display:flex;align-items:center;gap:.8rem;color:rgba(255,255,255,.85);font-size:.95rem;}
+  .mfg-list li::before{content:'';width:8px;height:8px;border-radius:50%;background:#8ed44a;flex-shrink:0;}
+  .mfg-img{border-radius:16px;overflow:hidden;}
+  .mfg-img img{width:100%;height:380px;object-fit:cover;display:block;}
+  .mfg a{color:#8ed44a;}
+
+  /* TESTIMONIALS */
+  .testimonials{background:var(--gray);}
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+  .testi-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .testi-card p{font-size:.93rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1.2rem;}
+  .testi-author{display:flex;align-items:center;gap:.8rem;}
+  .testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;}
+  .testi-name{font-size:.88rem;font-weight:700;color:var(--teal-dark);}
+  .testi-role{font-size:.78rem;color:var(--muted);}
+
+  /* CTA */
+  .cta-section{position:relative;background:linear-gradient(135deg,var(--teal-dark),#1e4d66);text-align:center;padding:6rem 2rem;}
+  .cta-section .section-tag{color:#8ed44a;margin-bottom:.5rem;}
+  .cta-section h2{font-size:2.4rem;font-weight:800;color:#fff;margin-bottom:.8rem;}
+  .cta-section p{font-size:1rem;color:rgba(255,255,255,.75);margin-bottom:2rem;}
+  .cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+  .cta-btns .btn-primary{padding:.8rem 2rem;font-size:1rem;}
+  .cta-btns .btn-ghost{padding:.8rem 2rem;font-size:1rem;border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;font-weight:600;}
+
+  /* FOOTER */
+  footer{background:var(--dark);color:rgba(255,255,255,.7);padding:4rem 2rem 2rem;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+  .footer-brand img{height:40px;margin-bottom:1rem;}
+  .footer-brand p{font-size:.88rem;line-height:1.6;margin-bottom:1rem;}
+  .footer-col h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.06em;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+  .footer-col ul li a{font-size:.85rem;color:rgba(255,255,255,.6);transition:.2s;}
+  .footer-col ul li a:hover{color:#8ed44a;}
+  .footer-contact-item{display:flex;flex-direction:column;margin-bottom:.8rem;}
+  .footer-contact-item .type{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.4);margin-bottom:.2rem;}
+  .footer-contact-item a{font-size:.88rem;color:rgba(255,255,255,.6);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-bottom p{font-size:.8rem;}
+  .footer-bottom-links{display:flex;gap:1.5rem;}
+  .footer-bottom-links a{font-size:.8rem;color:rgba(255,255,255,.5);}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .hero-content,.about-grid,.mfg-grid,.footer-top{grid-template-columns:1fr;}
+    .hero h1{font-size:2.2rem;}
+    .hero-stats{grid-template-columns:repeat(4,1fr);}
+    .nav-links{display:none;}
+  }
+  @media(max-width:600px){
+    .hero-stats{grid-template-columns:repeat(2,1fr);}
+    .products-header{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="data:image/png;base64,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арт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" alt="ZR Surgical Logo"/>
+      <span>ZR Surgical</span>
+    </div>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#manufacturing">Manufacturing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:+923289917919" class="nav-phone">+92 328 9917919</a>
+      <a href="#contact" class="btn btn-primary">Request Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">ISO Certified · Sialkot, Pakistan</div>
+      <h1>Passion & Expertise<br>for Precision<br><em>Surgical Instruments</em></h1>
+      <p>World-class instruments manufactured in Pakistan, trusted by hospitals and distributors across 30+ countries. Precision built, globally delivered.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn btn-primary">Explore Products →</a>
+        <a href="#contact" class="btn-ghost">Request a Quote</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">2010</div><div class="lbl">Founded</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="lbl">Product Lines</div></div>
+      <div class="hero-stat"><div class="num">5,000+</div><div class="lbl">Products</div></div>
+      <div class="hero-stat"><div class="num">30+</div><div class="lbl">Countries</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">ISO 13485 Certified</span>
+    <span class="ticker-item">CE Marked</span>
+    <span class="ticker-item">WHO GMP Compliant</span>
+    <span class="ticker-item">Grade 304 &amp; 316L Steel</span>
+    <span class="ticker-item">Autoclave Safe</span>
+    <span class="ticker-item">Sialkot Manufacturing</span>
+    <span class="ticker-item">24hr Quote Response</span>
+    <span class="ticker-item">30+ Countries Served</span>
+    <span class="ticker-item">5,000+ Products</span>
+    <span class="ticker-item">ISO 13485 Certified</span>
+    <span class="ticker-item">CE Marked</span>
+    <span class="ticker-item">WHO GMP Compliant</span>
+    <span class="ticker-item">Grade 304 &amp; 316L Steel</span>
+    <span class="ticker-item">Autoclave Safe</span>
+    <span class="ticker-item">Sialkot Manufacturing</span>
+    <span class="ticker-item">24hr Quote Response</span>
+    <span class="ticker-item">30+ Countries Served</span>
+    <span class="ticker-item">5,000+ Products</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="products-header">
+      <div>
+        <div class="section-tag">Assortment</div>
+        <h2 class="section-title">Our Product Lines</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline">View all →</a>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img">🔪</div>
+        <div class="product-body">
+          <h3>Surgical Instruments</h3>
+          <div class="product-count">1,200+ Products</div>
+          <a href="#contact" class="product-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🦷</div>
+        <div class="product-body">
+          <h3>Dental Instruments</h3>
+          <div class="product-count">800+ Products</div>
+          <a href="#contact" class="product-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🏥</div>
+        <div class="product-body">
+          <h3>Holloware</h3>
+          <div class="product-count">Premium Range</div>
+          <a href="#contact" class="product-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🛏️</div>
+        <div class="product-body">
+          <h3>Hospital Furniture</h3>
+          <div class="product-count">Full Range</div>
+          <a href="#contact" class="product-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">✂️</div>
+        <div class="product-body">
+          <h3>Beauty Instruments</h3>
+          <div class="product-count">500+ Products</div>
+          <a href="#contact" class="product-link">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Precision Made in Pakistan since 2010</h2>
+        <p style="color:var(--muted);line-height:1.7;margin-bottom:1.5rem;">ZR Surgical operates from ISO-certified facilities in Sialkot — the world's leading surgical instrument manufacturing cluster. Trusted by hospitals and distributors across 30+ countries worldwide.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="num">2010</div><div class="lbl">Founded</div></div>
+          <div class="about-stat"><div class="num">5</div><div class="lbl">Product Lines</div></div>
+          <div class="about-stat"><div class="num">30+</div><div class="lbl">Countries</div></div>
+        </div>
+      </div>
+      <div class="about-imgs">
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600&q=80" alt="Manufacturing"/></div>
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80" alt="Instruments"/></div>
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?w=600&q=80" alt="Hospital"/></div>
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80" alt="Quality"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANUFACTURING -->
+<section class="mfg" id="manufacturing">
+  <div class="section-inner">
+    <div class="section-tag">Manufacturing</div>
+    <h2 class="section-title">Built to the highest standard.</h2>
+    <div class="mfg-grid">
+      <div>
+        <p style="color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:.5rem;">Sialkot, Pakistan supplies over 70% of the world's surgical instruments. Our ISO-certified facility combines generations of craft expertise with modern precision equipment.</p>
+        <ul class="mfg-list">
+          <li>Grade 304 &amp; 316L surgical stainless steel</li>
+          <li>CNC precision machining to 0.01mm tolerances</li>
+          <li>Electrolytic polishing for sterility assurance</li>
+          <li>ISO 13485 Quality Management System</li>
+          <li>CE marked for European distribution</li>
+          <li>100% autoclave and sterilization tested</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="margin-top:.5rem;display:inline-block;">View manufacturing capabilities →</a>
+      </div>
+      <div class="mfg-img">
+        <img src="https://images.unsplash.com/photo-1581093458791-9d15482442f6?w=800&q=80" alt="ZR Surgical Manufacturing"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-tag">Trust &amp; Compliance</div>
+    <h2 class="section-title">Certified to global standards.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;margin-top:2.5rem;">
+      <div style="background:var(--gray);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">🏆</div>
+        <div style="font-weight:700;color:var(--teal-dark);">ISO 13485</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:.3rem;">Quality Management</div>
+      </div>
+      <div style="background:var(--gray);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">🇪🇺</div>
+        <div style="font-weight:700;color:var(--teal-dark);">CE Marked</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:.3rem;">European Distribution</div>
+      </div>
+      <div style="background:var(--gray);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">🌍</div>
+        <div style="font-weight:700;color:var(--teal-dark);">WHO GMP</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:.3rem;">Global Compliance</div>
+      </div>
+      <div style="background:var(--gray);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.5rem;">🔬</div>
+        <div style="font-weight:700;color:var(--teal-dark);">Grade 316L Steel</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:.3rem;">Surgical Grade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="section-tag">Trusted By</div>
+    <h2 class="section-title">Trusted by leading surgeons worldwide.</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"We switched to ZR Surgical and immediately saw the quality difference. Consistent instruments, excellent packaging, and responsive customer support every time."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--teal);">RM</div>
+          <div><div class="testi-name">Dr. Rajan Mehta</div><div class="testi-role">Procurement Director · Leading Surgical Center, UAE</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p>"As a hospital buyer, consistency and reliability matter most. ZR Surgical has never let us down — sterile packaging, durable tools, and fast delivery worldwide."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--green-dark);">SC</div>
+          <div><div class="testi-name">Sarah Chen</div><div class="testi-role">Senior Buyer · Regional Medical Hospital, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p>"Our surgeons specifically requested ZR Surgical instruments after testing a sample batch. The precision and comfort speaks volumes about the manufacturing quality."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--teal-dark);">MR</div>
+          <div><div class="testi-name">Marco Rossi</div><div class="testi-role">Operations Manager · Specialty Orthopedic Clinic, Italy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-inner" style="max-width:700px;">
+    <div class="section-tag">Get Started</div>
+    <h2>Any questions?<br>We are happy to assist.</h2>
+    <p>Get a custom quote within 24 hours. Detailed pricing, lead times, and certification documentation included.</p>
+    <div class="cta-btns">
+      <a href="mailto:zrsurgical1@gmail.com" class="btn btn-primary">Request a Quote →</a>
+      <a href="https://wa.me/923289917919" class="btn-ghost">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">ZR Surgical</p>
+        <p>Precision surgical instruments. Manufactured in Sialkot. Trusted in 30+ countries.</p>
+        <p style="margin-top:.5rem;">Sialkot, Punjab, Pakistan</p>
+        <p><a href="mailto:zrsurgical1@gmail.com" style="color:#8ed44a;">zrsurgical1@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Surgical Instruments</a></li>
+          <li><a href="#">Dental Instruments</a></li>
+          <li><a href="#">Holloware</a></li>
+          <li><a href="#">Hospital Furniture</a></li>
+          <li><a href="#">Beauty Instruments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About &amp; Manufacturing</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">How to Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" id="contact-info">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <span class="type">Pakistan</span>
+          <a href="tel:+923289917919">+92 328 9917919</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="type">WhatsApp</span>
+          <a href="https://wa.me/923289917919">+92 328 9917919</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="type">Email</span>
+          <a href="mailto:zrsurgical1@gmail.com">zrsurgical1@gmail.com</a>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:.8rem;font-size:.82rem;">Request Quote →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ZR Surgical. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
